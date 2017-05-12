@@ -4497,9 +4497,11 @@ static int hdmi_msm_power_on(struct platform_device *pdev)
 			mutex_unlock(&external_common_state_hpd_mutex);
 		}
 
+#ifdef CONFIG_FB_MSM_HDMI_MHL
 		if (hdmi_msm_state->pd->driving_params) {
 			adjust_driving_strength();
 		}
+#endif
 
 		hdmi_msm_dump_regs("HDMI-ON: ");
 		DEV_INFO("power=%s DVI= %s\n",
